@@ -19,12 +19,13 @@ def run(
         fail("Kibana requires Elasticsearch. Set need_elasticsearch=True when need_kibana=True.")
     
     output = {
-        "kafka_bootstrap_server_host_port": None,
+        "kafka_host_port": None,
         "elasticsearch_url": None,
         "redis_url": None,
         "mongodb_url": None,
         "rabbitmq_node_hostname": None,
         "rabbitmq_node_port": None,
+        "rabbitmq_node_names": None,
     }
 
     if need_redis:
@@ -33,8 +34,8 @@ def run(
         output["redis_url"] = redis_url
     if need_kafka:
         zookeeper_service = zookeeper_module.run(plan)
-        kafka_bootstrap_server_host_port = kafka_module.run(plan)
-        output["kafka_bootstrap_server_host_port"] = kafka_bootstrap_server_host_port
+        kafka_host_port = kafka_module.run(plan)
+        output["kafka_host_port"] = kafka_host_port
     if need_elasticsearch:
         elasticsearch_url = elasticsearch_module.run(plan)
         output["elasticsearch_url"] = elasticsearch_url
