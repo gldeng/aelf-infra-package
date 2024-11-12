@@ -1,0 +1,5 @@
+name: github.com/gldeng/aelf-infra-package
+description: |-
+  Kurtosis package for third paryt databases or message queues
+replace:
+  "github.com/kurtosis-tech/etcd-package": "github.com/kurtosis-tech/etcd-package@b676711151d1309d3a65241e860b1c0a0109121b"
