@@ -23,7 +23,8 @@ def run(
         "elasticsearch_url": None,
         "redis_url": None,
         "mongodb_url": None,
-        "rabbitmq_host_port": None,
+        "rabbitmq_node_hostname": None,
+        "rabbitmq_node_port": None,
     }
 
     if need_redis:
@@ -51,8 +52,6 @@ def run(
                 "rabbitmq_vhost": "/",
             })["node_names"]
         rabbitmq_service = plan.get_service(rabbitmq_node_names[0])
-        output["rabbitmq_host_port"] = "{hostname}:{port}".format(
-            hostname=rabbitmq_service.hostname,
-            port=rabbitmq_service.ports["amqp"].number
-        )
+        output["rabbitmq_node_hostname"] = rabbitmq_service.hostname
+        output["rabbitmq_node_port"] = rabbitmq_service.ports["amqp"].number
     return output
