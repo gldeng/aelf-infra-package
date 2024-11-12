@@ -54,4 +54,5 @@ def run(
         rabbitmq_service = plan.get_service(rabbitmq_node_names[0])
         output["rabbitmq_node_hostname"] = rabbitmq_service.hostname
         output["rabbitmq_node_port"] = rabbitmq_service.ports["amqp"].number
+        output["rabbitmq_node_names"] = rabbitmq_node_names
     return output
